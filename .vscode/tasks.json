@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-project",
+            "type": "shell",
+            "command": "C:\\MSYS2_CPP_Compiler\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-g",
+                "${workspaceFolder}/src/*.c",
+                "-o",
+                "${workspaceFolder}/src/main.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
