@@ -7,6 +7,7 @@
 
 #include "hash_table.h"
 #include "prime.h"
+#include "utils.h"
 
 static void ht_resize(ht_hash_table* ht, const int new_base_size);
 static void ht_resize_up(ht_hash_table* ht);
@@ -30,7 +31,7 @@ static ht_item* ht_new_item(const char* key, const char* value) {
 // Method to create a new hash table using specified size; called by ht_new_table()
 static ht_hash_table* ht_new_sized(const int base_size) {
     // Allocate space for ht
-    ht_hash_table* ht = malloc(sizeof(ht_hash_table));
+    ht_hash_table* ht = xmalloc(sizeof(ht_hash_table));
     // Note down base_size; doesn't have to be prime
     ht->base_size = base_size;
     // Compute the next valid prime size based on base_size
@@ -38,7 +39,7 @@ static ht_hash_table* ht_new_sized(const int base_size) {
     // Initialize count of elements to be 0
     ht->count = 0;
     // Allocate contiguous space for items with calloc(number of items, size of each item pointer)
-    ht->items = calloc((size_t)ht->size, sizeof(ht_item*));
+    ht->items = xcalloc((size_t)ht->size, sizeof(ht_item*));
     // Return the hash table
     return ht;
 }
